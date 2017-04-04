@@ -1,0 +1,56 @@
+<div class="form_wizard" [ngClass]="{wizard_horizontal: !config.vertical, wizard_verticle: config.vertical}">
+
+    <!-- HORIZONTAL STEPS -->
+    <div class="row" *ngIf="!config.vertical">
+        <div class="col-lg-11">
+            <ul class="wizard_steps anchor" *ngIf="config.showStepsBar">
+                <li *ngFor="let step of steps">
+                    <wizard-step-tab [step]="step" 
+                                     [showLabels]="config.showStepLabels" 
+                                     (stepClicked)="onStepClicked(step)">
+                    </wizard-step-tab>
+                </li>
+            </ul>
+        </div>
+
+        <!-- HORIZONTAL MINI CONTROL -->
+        <div class="col-lg-1 wizard_mininav" *ngIf="config.showMiniControl">
+            <button class="btn btn-sm btn-secondary btn-outline" [disabled]="isFirstStep()" (click)="onPrev()"><i class="fa fa-arrow-left"></i></button>
+            <button class="btn btn-sm btn-primary btn-outline" [hidden]="isLastStep()" (click)="onNext()"><i class="fa fa-arrow-right"></i></button>
+            <button class="btn btn-sm btn-success btn-outline" [hidden]="!isLastStep()" (click)="onFinish()"><i class="fa fa-check"></i></button>
+        </div>
+    </div>
+
+    <!-- VERTICAL STEPS -->
+    <ul class="list-unstyled wizard_steps anchor" *ngIf="config.vertical && config.showStepsBar">
+        <li *ngFor="let step of steps">
+            <wizard-step-tab [step]="step" 
+                             [showLabels]="config.showStepLabels" 
+                             (stepClicked)="onStepClicked(step)">
+            </wizard-step-tab>
+        </li>
+    </ul>
+
+    <div class="row">
+        <!-- STEPS BODY -->
+        <div class="stepContainer">
+            <ng-content></ng-content>
+        </div>
+
+        <!-- VERTICAL MINI CONTROL -->
+        <div *ngIf="config.vertical && config.showMiniControl" class="pull-right">
+            <button class="btn btn-sm btn-secondary btn-outline" [disabled]="isFirstStep()" (click)="onPrev()"><i class="fa fa-arrow-up"></i></button>
+            <br />
+            <button class="btn btn-sm btn-primary btn-outline" [hidden]="isLastStep()" (click)="onNext()"><i class="fa fa-arrow-down"></i></button>
+            <button class="btn btn-sm btn-success btn-outline" [hidden]="!isLastStep()" (click)="onFinish()"><i class="fa fa-check"></i></button>
+        </div>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="clearfix" *ngIf="config.showActionBar"></div>
+    <div class="actionBar" *ngIf="config.showActionBar">
+        <button class="btn btn-sm btn-secondary btn-outline" [disabled]="isFirstStep()" (click)="onPrev()"><i class="fa fa-arrow-left"></i> {{config.previousLabel}}</button>
+        <button class="btn btn-sm btn-primary btn-outline" [hidden]="isLastStep()" (click)="onNext()">{{config.nextLabel}} <i class="fa fa-arrow-right"></i></button>
+        <button class="btn btn-sm btn-success btn-outline" [hidden]="!isLastStep()" (click)="onFinish()"><i class="fa fa-check"></i> {{config.finishLabel}}</button>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<a style="cursor: pointer" 
+    [ngClass]="{disabled: step.state === stepStates.Pristine, selected: step.state === stepStates.Dirty, done: step.state === stepStates.Completed}"
+    (click)="onStepClicked()"
+>
+    <span class="step_no">{{step.index + 1}}</span>
+    <span class="step_descr" *ngIf="showLabels">{{step.title}}<br><small>{{step.description}}</small></span>
+</a>

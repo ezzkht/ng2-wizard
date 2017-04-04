@@ -1,0 +1,69 @@
+﻿body {
+    color: #73879C;
+    background: #ECF0F1;
+    /*#ECF0F1; #FCFCFC*/
+
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+a {
+    color: #5A738E;
+    text-decoration: none;
+}
+
+a,
+a:visited,
+a:focus,
+a:active,
+:visited,
+:focus,
+:active,
+.btn:focus,
+.btn.active.focus {
+    outline: 0;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none
+}
+
+legend {
+    padding-bottom: 7px;
+    font-size: 18px;
+    color: inherit;
+}
+
+/*textarea {
+    padding: 10px;
+    vertical-align: top;
+    width: 200px;
+}*/
+
+textarea:focus {
+    outline-style: solid;
+    outline-width: 2px;
+}
+
+td span {
+    line-height: 28px;
+}
+
